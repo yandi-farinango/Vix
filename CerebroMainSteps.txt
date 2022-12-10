@@ -1,0 +1,5 @@
+Step1: data feed
+Step2: connect data feed to Cerebro 
+Step3: connect strategy to apply to data feed 
+
+Now we can visualize outcome 
