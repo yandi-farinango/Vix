@@ -3,3 +3,6 @@ Step2: connect data feed to Cerebro
 Step3: connect strategy to apply to data feed 
 
 Now we can visualize outcome 
+
+General Strategy Notes
+ - Strategy seems to oversold bottoms pretty well but, struggles getting out of positions (ie exiting too early). 
