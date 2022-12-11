@@ -1,14 +1,14 @@
 import backtrader as bt 
 from backtrader import Cerebro
 import os 
-from Strategies.VIXStrategy import VIX
+from Strategies.VIXStrategy import VIXStrategy
 
 cerebro = Cerebro()
 cerebro.broker.setcash(100000)
 
 class SPYVIXData(bt.feeds.GenericCSVData):      # To attach datafeed, we're extending GenericCSVData class 
     # specifiy lines we are interested in 
-    lines = ('vixopen', 'vixhigh', 'vixclose')
+    lines = ('vixopen', 'vixhigh', 'vixlow', 'vixclose')
 
     # Mapping GenericCSVData class to columns in OUR CSV
     params = (
@@ -52,7 +52,7 @@ cerebro.adddata(spyVixDataFeed)
 cerebro.adddata(vixDataFeed)
 
 # add Strategy
-cerebro.addstrategy(VIX)
+cerebro.addstrategy(VIXStrategy)
 
 cerebro.run()
 cerebro.plot(volume=False)  # we havent provided volume data 

@@ -2,11 +2,11 @@ import backtrader as bt
 import datetime
 
 
-class VIX(bt.strategies):   # extends bt.strategies
+class VIXStrategy(bt.Strategy):   # extends bt.Strategy
     def __init__(self):
         self.vix = self.datas[0].vixclose
-        self.spyopen = self.datas[0].vixopen
-        self.spyclose = self.datas[0].vixclose
+        self.spyopen = self.datas[0].open
+        self.spyclose = self.datas[0].close
 
     # logging function for printing date 
     def log(self, txt, dt=None):
