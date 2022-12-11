@@ -1,8 +1,10 @@
 import backtrader as bt 
 from backtrader import Cerebro
 import os 
+from Strategies.VIXStrategy import VIX
 
 cerebro = Cerebro()
+cerebro.broker.setcash(100000)
 
 class SPYVIXData(bt.feeds.GenericCSVData):      # To attach datafeed, we're extending GenericCSVData class 
     # specifiy lines we are interested in 
@@ -48,6 +50,9 @@ vixDataFeed = VIXData(dataname=vix_file)
 # # Connect Data Feed to Cerebro 
 cerebro.adddata(spyVixDataFeed)
 cerebro.adddata(vixDataFeed)
+
+# add Strategy
+cerebro.addstrategy(VIX)
 
 cerebro.run()
 cerebro.plot(volume=False)  # we havent provided volume data 
