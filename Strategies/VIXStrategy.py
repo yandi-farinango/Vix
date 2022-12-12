@@ -29,8 +29,12 @@ class VIXStrategy(bt.Strategy):   # extends bt.Strategy
                 print('Buying {} SPY at {}'.format(size, self.spyopen[0]))
                 self.buy(size=size)
 
+        if len(self.spyopen) % 20 == 0:
+            self.log('Adding 5000 cash to VIX buy and hold strategy. Cash on hand is now {}'.format(self.broker.getcash()))
+            self.broker.add_cash(5000)
+
         # if VIX falls below 12, and we have an existing position, trigger sell ie close()
-        if self.vix[0] < 12 and self.position:
-            self.close()
+        # if self.vix[0] < 12 and self.position:
+        #     self.close()    # can also do self.sell() to specify number of shares to sell 
 
 
